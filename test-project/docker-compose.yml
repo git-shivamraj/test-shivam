@@ -1,0 +1,25 @@
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "4173:4173"
+    depends_on:
+      - backend
+  
+  backend:
+   build: ./backend
+   container_name: backend
+   ports:
+   - "5000:5000"
+   environment:
+     MONGO_URI: mongodb://mongodb:27017/hellouser
+   depends_on:
+    - mongodb
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
