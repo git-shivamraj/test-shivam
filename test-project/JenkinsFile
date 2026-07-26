@@ -10,14 +10,27 @@ pipeline {
         stage('Frontend Build') {
             steps{
                  dir('test-project/frontend'){
-                    sh 'docker build -t frontend .'
+                    sh 'docker build -t docker push shivamrajdocker/test-project-frontend:latest .'
               }
             }
         }
         stage('backend build') {
             steps{
                 dir('test-project/backend'){
-                    sh 'docker build -t backend .'
+                    sh 'docker build -t shivamrajdocker/test-project-backend:latest .'
+                }
+            }
+        }
+        stage('Docker Hub Login'){
+            steps{
+                withCredentials([usernamePassword{
+                    credentialsID : 'dockerhub'
+                    usernameVariable: 'DOCKER_USERNAME'
+                    passwordVariable: 'DOCKER_PASSWORD'
+                }]){
+                    sh '''
+                    echo ""$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+                    '''
                 }
             }
         }

@@ -47,3 +47,14 @@ lerna-debug.log*
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Coverage
+coverage/
+
+
+# Misc
+*.swp
+*.swo
