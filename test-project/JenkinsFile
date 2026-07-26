@@ -10,7 +10,7 @@ pipeline {
         stage('Frontend Build') {
             steps{
                  dir('test-project/frontend'){
-                    sh 'docker build -t docker push shivamrajdocker/test-project-frontend:latest .'
+                    sh 'docker build -t shivamrajdocker/test-project-frontend:latest .'
               }
             }
         }
@@ -23,21 +23,23 @@ pipeline {
         }
         stage('Docker Hub Login'){
             steps{
-                withCredentials([usernamePassword{
-                    credentialsID : 'dockerhub'
-                    usernameVariable: 'DOCKER_USERNAME'
-                    passwordVariable: 'DOCKER_PASSWORD'
-                }]){
-                    sh '''
+                withCredentials([
+                    usernamePassword(
+                      credentialsId : 'dockerhub',
+                      usernameVariable: 'DOCKER_USERNAME',
+                      passwordVariable: 'DOCKER_PASSWORD'
+                )
+             ]){
+                sh '''
                     echo ""$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-                    '''
+                '''
                 }
             }
         }
     }
     post{
         success{
-            echo 'Docker image built succesfully'
+            echo 'Docker image built successfully'
         }
         failure{
             echo 'failed'
