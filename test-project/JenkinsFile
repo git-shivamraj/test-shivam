@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                Checkout scm
+            }
+        }
+        stage('Frontend Build') {
+            steps{
+                 dir('frontend'){
+                    sh 'docker build -t frontend .'
+              }
+            }
+        }
+        stage('backend build') {
+            steps{
+                dir('backend'){
+                    sh 'docker build -t backend .'
+                }
+            }
+        }
+    }
+    post{
+        success{
+            echo 'Docker image built succesfully'
+        }
+        failure{
+            echo 'failed'
+        }
+    }
+}
