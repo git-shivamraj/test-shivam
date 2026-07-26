@@ -10,7 +10,7 @@ pipeline {
         stage('Frontend Build') {
             steps{
                  dir('test-project/frontend'){
-                    sh 'docker build -t docker push shivamrajdocker/test-project-frontend:latest .'
+                    sh 'docker build -t shivamrajdocker/test-project-frontend:latest .'
               }
             }
         }
