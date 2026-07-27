@@ -1,0 +1,14 @@
+variable "aws_region" {
+    description = "AWS resources"
+    type = string
+}
+
+variable "project name" {
+    description = "Name of the project"
+    type = string
+}
+
+variable "environment"{
+    description = "Deployment environment"
+    type = string
+}
