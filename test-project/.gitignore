@@ -58,3 +58,9 @@ coverage/
 # Misc
 *.swp
 *.swo
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl

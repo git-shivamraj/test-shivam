@@ -13,12 +13,6 @@ output "private_subnets" {
   value       = module.vpc.private_subnets
 }
 
-output "cluster_name" {
-  description = "EKS Cluster Name"
-  value       = module.eks.cluster_name
-}
-
-output "cluster_endpoint" {
-  description = "EKS API Endpoint"
-  value       = module.eks.cluster_endpoint
+output "public_ip" {
+  value = aws_instance.k3s_server.public_ip
 }
