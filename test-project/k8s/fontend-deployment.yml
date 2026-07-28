@@ -23,3 +23,17 @@ spec:
 
         ports:
         - containerPort: 80
+        
+livenessProbe:
+  httpGet:
+    path: /api/health
+    port: 5000
+  initialDelaySeconds: 15
+  periodSeconds: 20
+
+readinessProbe:
+  httpGet:
+    path: /api/health
+    port: 5000
+  initialDelaySeconds: 5
+  periodSeconds: 10
