@@ -59,9 +59,3 @@ app.listen(PORT, "0.0.0.0", () => {
   console.log(`Health check: http://localhost:${PORT}/api/health`);
   console.log("=================================");
 });
-app.listen(PORT, "0.0.0.0", () => {
-  console.log("=================================");
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Health check: http://localhost:${PORT}/api/health`);
-  console.log("=================================");
-});
