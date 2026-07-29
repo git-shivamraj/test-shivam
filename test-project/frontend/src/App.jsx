@@ -3,7 +3,7 @@ import Header from './components/Header';
 import UserForm from './components/UserForm';
 import UserList from './components/UserList';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
 
 function App() {
   const [users, setUsers] = useState([]);
